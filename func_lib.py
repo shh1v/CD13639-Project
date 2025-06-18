@@ -15,7 +15,7 @@ def createHistPrices(start_date = '2000-01-01', end_date = '2024-05-01'):
     historical_prices = yf.download(sp500_tickers, start=start_date, end=end_date)
     
     # Filter and keep only columns where the first level of the MultiIndex is 'Adj Close'
-    historical_prices  = historical_prices.loc[:, historical_prices.columns.get_level_values(0) == 'Adj Close']
+    historical_prices  = historical_prices.loc[:, historical_prices.columns.get_level_values(0) == 'Close']
     
     # Remove the MultiIndex and keep only the second level
     historical_prices.columns = historical_prices.columns.droplevel(0)   
